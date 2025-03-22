@@ -1,2 +1,2 @@
 # evalanche-club.github.io
-Official Website of the Evelanche Club
+Official Website of the Evalanche Club
