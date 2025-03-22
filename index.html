@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css">
+        <title>Evalanche Club - ECE Department</title>
+        <!-- Three.js for 3D animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <!-- GSAP for cursor animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    </head>
+    <body>
+        <!-- 3D Background Canvas -->
+        <div id="three-background"></div>
+
+        <header class="header">
+            <div class="logo">Evalanche Club</div>
+            <div class="tagline">"For the students, by the students"</div>
+            <a href="events.html" class="nav-button">View Events</a>
+        </header>
+        <section class="about">
+            <div class="college-info">
+                <h2 class="section-title">Department of Electronics and Communication Engineering</h2>
+                <h2>Jain (Deemed-to-be) University</h2>
+            </div>
+            <h3 class="section-header">Faculty Mentors</h3>
+            <div class="quotes-container">
+                <div class="quote-card">
+                    <p class="quote">"Evalanche Club represents the innovative spirit of our ECE department. It serves as a platform where students can transform their theoretical knowledge into practical applications."</p>
+                    <p class="author">Dr. R Sukumar</p>
+                    <p class="position">Head of Department</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"Through Evalanche Club, we aim to nurture not just technical skills, but also leadership qualities and team spirit among our students."</p>
+                    <p class="author">Prof. Harikrishna Moorthy</p>
+                    <p class="position">Program Head</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"Our club provides a unique space for students to explore, innovate, and grow together. It's wonderful to see their enthusiasm and creativity in action."</p>
+                    <p class="author">Prof. Keerthana H Magadi</p>
+                    <p class="position">Club Co-ordinator</p>
+                </div>
+            </div>
+            
+            <h3 class="section-header">Student Leadership Team</h3>
+            <div class="quotes-container">
+                <div class="quote-card">
+                    <p class="quote">"Leading Evalanche Club is about creating opportunities for every ECE student to discover their potential in electronics and technology."</p>
+                    <p class="author">Aryan R</p>
+                    <p class="position">President</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"In the Evalanche Club, we go beyond circuits and code, Where ideas ignite, and creativity unfolds. From tech to teamwork, we innovate and inspire, Building a legacy of passion and fire."</p>
+                    <p class="author">Madhumitha UR</p>
+                    <p class="position">Vice President</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"At Evalanche Club, we don’t just build projects; we craft experiences, challenge limits, and redefine possibilities."</p>
+                    <p class="author">Sreevishnu A</p>
+                    <p class="position">Treasurer</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"We're committed to maintaining transparency and making the most of our resources for student development."</p>
+                    <p class="author">Vaishnav Sabari Girish</p>
+                    <p class="position">Vice-Treasurer</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"Communication and coordination are key to our success. We ensure every member's voice is heard and ideas are implemented effectively."</p>
+                    <p class="author">Puneeth A</p>
+                    <p class="position">Secretary</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"Documentation and organization are crucial for our club's growth. We're building a strong foundation for future generations."</p>
+                    <p class="author">Radhika Khorana</p>
+                    <p class="position">Vice-secretary</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"Our events are designed to challenge students and push their boundaries in electronics and communication engineering."</p>
+                    <p class="author">Prasanna Bhore</p>
+                    <p class="position">Organizer</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote">"We focus on creating engaging technical events that combine learning with practical experience."</p>
+                    <p class="author">Arsh Singh</p>
+                    <p class="position">Vice-organizer</p>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
+        </footer>
+
+        <!-- Three.js Script for Glowing Particle Wave -->
+        <script>
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('three-background').appendChild(renderer.domElement);
+
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 3000;
+            const posArray = new Float32Array(particlesCount * 3);
+            const colors = new Float32Array(particlesCount * 3);
+
+            for (let i = 0; i < particlesCount * 3; i += 3) {
+                // Position
+                posArray[i] = (Math.random() - 0.5) * 100; // X
+                posArray[i + 1] = (Math.random() - 0.5) * 50; // Y
+                posArray[i + 2] = (Math.random() - 0.5) * 50; // Z
+
+                // Color (gradient from cyan to blue)
+                colors[i] = 0.0; // R
+                colors[i + 1] = Math.random(); // G
+                colors[i + 2] = 1.0; // B
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.3,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
+
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            camera.position.z = 50;
+
+            // Wave animation
+            const positions = particlesMesh.geometry.attributes.position.array;
+            const time = { value: 0 };
+
+            function animate() {
+                requestAnimationFrame(animate);
+
+                time.value += 0.02;
+                for (let i = 0; i < particlesCount * 3; i += 3) {
+                    const x = positions[i];
+                    const z = positions[i + 2];
+                    positions[i + 1] = Math.sin(time.value + x * 0.1 + z * 0.1) * 5 + (Math.random() - 0.5) * 0.5;
+                }
+                particlesMesh.geometry.attributes.position.needsUpdate = true;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Resize handler
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        </script>
+
+        <!-- Cursor Tracking Animation -->
+        <script>
+            const cursor = document.createElement('div');
+            cursor.className = 'custom-cursor';
+            document.body.appendChild(cursor);
+
+            gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(cursor, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        </script>
+    </body>
+</html>

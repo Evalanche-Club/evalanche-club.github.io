@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="events.css">
+        <title>Events - Evalanche Club</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    </head>
+    <body>
+        <div id="three-background"></div>
+
+        <header class="header">
+            <div class="logo">Evalanche Club</div>
+            <div class="tagline">Events & Activities</div>
+            <a href="index.html" class="nav-button">Back to Homepage</a>
+        </header>
+
+        <section class="events">
+            <h2 class="section-title">Our Technical Events</h2>
+            
+            <div class="event-cards">
+                <div class="event-card">
+                    <div class="event-header">
+                        <h3>Circuit Debugging</h3>
+                        <div class="event-badge">Flagship Event</div>
+                    </div>
+                    <div class="event-content">
+                        <p class="event-description">
+                            A challenging competition where participants test their troubleshooting skills 
+                            by identifying and fixing errors in electronic circuits. Perfect for sharpening 
+                            practical knowledge and problem-solving abilities.
+                        </p>
+                        <div class="event-highlights">
+                            <div class="highlight">
+                                <span class="highlight-label">Duration:</span>
+                                <span class="highlight-value">6 Hours</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Participation:</span>
+                                <span class="highlight-value">Individual/Team</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <h3>Electrothon 1.0</h3>
+                        <div class="event-badge">Innovation Challenge</div>
+                    </div>
+                    <div class="event-content">
+                        <p class="event-description">
+                            Debug, build, innovate. Where circuits test skill and ideas ignite!
+                        </p>
+                        <div class="event-highlights">
+                            <div class="highlight">
+                                <span class="highlight-label">Duration:</span>
+                                <span class="highlight-value">5 Hours</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Participation:</span>
+                                <span class="highlight-value">Team</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <h3>Electrothon 2.0</h3>
+                        <div class="event-badge">Innovation Challenge V2</div>
+                    </div>
+                    <div class="event-content">
+                        <p class="event-description">
+                           Electrothon – where circuits challenge and ideas ignite. 
+                           Debug, build, and bring innovations to life.Think fast, 
+                           solve smart, and engineer the future!                        </p>
+                        <div class="event-highlights">
+                            <div class="highlight">
+                                <span class="highlight-label">Duration:</span>
+                                <span class="highlight-value">6 Hours</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Participation:</span>
+                                <span class="highlight-value">Team</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-header">
+                        <h3>Techathon</h3>
+                        <div class="event-badge">Tech Hackathon</div>
+                    </div>
+                    <div class="event-content">
+                        <p class="event-description">
+                                Where participants solved challenges, innovated solutions, 
+                                and presented ideas that made an impact!
+                        <div class="event-highlights">
+                            <div class="highlight">
+                                <span class="highlight-label">Duration:</span>
+                                <span class="highlight-value">6 Hours</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Participation:</span>
+                                <span class="highlight-value">Team</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
+        </footer>
+
+        <script>
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('three-background').appendChild(renderer.domElement);
+
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 5000;
+            const posArray = new Float32Array(particlesCount * 3);
+
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 100;
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.2,
+                color: 0x00FFFF,
+                transparent: true,
+                opacity: 0.6
+            });
+
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            camera.position.z = 50;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                particlesMesh.rotation.y += 0.001;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            const cursor = document.createElement('div');
+            cursor.className = 'custom-cursor';
+            document.body.appendChild(cursor);
+
+            gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(cursor, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        </script>
+    </body>
+</html>
