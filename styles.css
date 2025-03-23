@@ -12,6 +12,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 /* 3D Background */
 #three-background {
   position: fixed;
@@ -40,6 +42,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -72,6 +75,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -102,6 +106,7 @@ body {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 50px 50px;
   }
@@ -226,6 +231,7 @@ footer {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
