@@ -100,31 +100,19 @@
             document.getElementById('three-background').appendChild(renderer.domElement);
 
             const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 3000;
+            const particlesCount = 5000;
             const posArray = new Float32Array(particlesCount * 3);
-            const colors = new Float32Array(particlesCount * 3);
 
-            for (let i = 0; i < particlesCount * 3; i += 3) {
-                // Position
-                posArray[i] = (Math.random() - 0.5) * 100; // X
-                posArray[i + 1] = (Math.random() - 0.5) * 50; // Y
-                posArray[i + 2] = (Math.random() - 0.5) * 50; // Z
-
-                // Color (gradient from cyan to blue)
-                colors[i] = 0.0; // R
-                colors[i + 1] = Math.random(); // G
-                colors[i + 2] = 1.0; // B
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 100;
             }
 
             particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
             const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.3,
-                vertexColors: true,
+                size: 0.2,
+                color: 0x00FFFF,
                 transparent: true,
-                opacity: 0.8,
-                blending: THREE.AdditiveBlending
+                opacity: 0.6
             });
 
             const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -132,30 +120,32 @@
 
             camera.position.z = 50;
 
-            // Wave animation
-            const positions = particlesMesh.geometry.attributes.position.array;
-            const time = { value: 0 };
-
             function animate() {
                 requestAnimationFrame(animate);
-
-                time.value += 0.02;
-                for (let i = 0; i < particlesCount * 3; i += 3) {
-                    const x = positions[i];
-                    const z = positions[i + 2];
-                    positions[i + 1] = Math.sin(time.value + x * 0.1 + z * 0.1) * 5 + (Math.random() - 0.5) * 0.5;
-                }
-                particlesMesh.geometry.attributes.position.needsUpdate = true;
-
+                particlesMesh.rotation.y += 0.001;
                 renderer.render(scene, camera);
             }
             animate();
 
-            // Resize handler
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            const cursor = document.createElement('div');
+            cursor.className = 'custom-cursor';
+            document.body.appendChild(cursor);
+
+            gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(cursor, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
             });
         </script>
 
