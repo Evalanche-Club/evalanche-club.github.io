@@ -63,18 +63,31 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background: linear-gradient(135deg, rgba(10, 10, 46, 0.8), rgba(26, 26, 79, 0.8)), url('constellation-bg.jpg') no-repeat center center fixed; /* Overlay with background */
+  background-size: cover;
+  position: relative;
 }
 
-.header-content h1 {
+.header-content {
+  position: relative;
+}
+
+.header-title {
   font-size: 4rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: #4df0ff; /* Light cyan */
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5), /* 3D effect */
+               -2px -2px 4px rgba(255, 255, 255, 0.2),
+               0 0 15px rgba(77, 240, 255, 0.7); /* Glow effect */
 }
 
-.header-content p {
+.header-tagline {
   font-size: 1.2rem;
   font-weight: 300;
   color: #ddd;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5), /* Subtle 3D effect */
+               0 0 10px rgba(255, 255, 255, 0.5); /* Subtle glow */
 }
 
 /* About Section */
@@ -199,11 +212,11 @@ footer p {
       gap: 1rem;
   }
 
-  .header-content h1 {
+  .header-title {
       font-size: 2.5rem;
   }
 
-  .header-content p {
+  .header-tagline {
       font-size: 1rem;
   }
 
