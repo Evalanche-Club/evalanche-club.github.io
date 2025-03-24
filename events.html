@@ -7,6 +7,8 @@
         <link rel="icon" type="image/png" href="assets/images/logo.png">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <title>Events - The EvalanChE Club</title>
     </head>
     <body>
@@ -15,180 +17,86 @@
             <div class="logo-container">
                 <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="nav-logo">
             </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
 
-<!-- Header Section -->
-<header class="header">
-    <div class="header-content">
-        <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
-        <h1 class="header-title">Events & Activities</h1>
-    </div>
-</header>
-
-        <!-- Technical Events Section -->
-        <section class="events">
-            <h2 class="section-title">Our Technical Events</h2>
-            <div class="event-cards">
-                <div class="event-card">
-                    <div class="event-header">
-                        <h3>Circuit Debugging</h3>
-                        <div class="event-badge">Flagship Event</div>
-                    </div>
-                    <div class="event-content">
-                        <p class="event-description">
-                            A challenging competition where participants test their troubleshooting skills 
-                            by identifying and fixing errors in electronic circuits. Perfect for sharpening 
-                            practical knowledge and problem-solving abilities.
-                        </p>
-                        <div class="event-highlights">
-                            <div class="highlight">
-                                <span class="highlight-label">Duration:</span>
-                                <span class="highlight-value">6 Hours</span>
-                            </div>
-                            <div class="highlight">
-                                <span class="highlight-label">Participation:</span>
-                                <span class="highlight-value">Individual/Team</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <h3>Electrothon 1.0</h3>
-                        <div class="event-badge">Innovation Challenge</div>
-                    </div>
-                    <div class="event-content">
-                        <p class="event-description">
-                            Debug, build, innovate. Where circuits test skill and ideas ignite!
-                        </p>
-                        <div class="event-highlights">
-                            <div class="highlight">
-                                <span class="highlight-label">Duration:</span>
-                                <span class="highlight-value">5 Hours</span>
-                            </div>
-                            <div class="highlight">
-                                <span class="highlight-label">Participation:</span>
-                                <span class="highlight-value">Team</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <h3>Electrothon 2.0</h3>
-                        <div class="event-badge">Innovation Challenge V2</div>
-                    </div>
-                    <div class="event-content">
-                        <p class="event-description">
-                            Electrothon – where circuits challenge and ideas ignite. 
-                            Debug, build, and bring innovations to life. Think fast, 
-                            solve smart, and engineer the future!
-                        </p>
-                        <div class="event-highlights">
-                            <div class="highlight">
-                                <span class="highlight-label">Duration:</span>
-                                <span class="highlight-value">6 Hours</span>
-                            </div>
-                            <div class="highlight">
-                                <span class="highlight-label">Participation:</span>
-                                <span class="highlight-value">Team</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-header">
-                        <h3>Techathon</h3>
-                        <div class="event-badge">Tech Hackathon</div>
-                    </div>
-                    <div class="event-content">
-                        <p class="event-description">
-                            Where participants solved challenges, innovated solutions, 
-                            and presented ideas that made an impact!
-                        </p>
-                        <div class="event-highlights">
-                            <div class="highlight">
-                                <span class="highlight-label">Duration:</span>
-                                <span class="highlight-value">6 Hours</span>
-                            </div>
-                            <div class="highlight">
-                                <span class="highlight-label">Participation:</span>
-                                <span class="highlight-value">Team</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
+                <h1 class="header-title">Events & Activities</h1>
             </div>
-        </section>
+        </header>
 
-        <!-- Cultural Events Section -->
+        <!-- Events Section -->
         <section class="events">
-            <h2 class="section-title">Our Cultural Events</h2>
+            <h2 class="section-title">Upcoming Events</h2>
             <div class="event-cards">
                 <div class="event-card">
                     <div class="event-header">
-                        <h3>Deeksharambh 2024</h3>
-                        <div class="event-badge">Flagship Event</div>
+                        <h3>Tech Symposium 2025</h3>
+                        <span class="event-badge">Upcoming</span>
                     </div>
                     <div class="event-content">
                         <p class="event-description">
-                            A dynamic induction program designed to welcome and guide first-year students 
-                            as they embark on their academic journey. Engaging sessions, interactive activities, 
-                            and mentorship opportunities help them adapt seamlessly to college life while fostering 
-                            curiosity and camaraderie.
+                            Join us for a day of innovation and technology at the annual Tech Symposium. Featuring guest lectures, workshops, and project showcases.
                         </p>
                         <div class="event-highlights">
                             <div class="highlight">
-                                <span class="highlight-label">Duration:</span>
-                                <span class="highlight-value">1 Month</span>
+                                <span class="highlight-label">Date</span>
+                                <span class="highlight-value">April 15, 2025</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Time</span>
+                                <span class="highlight-value">9:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Venue</span>
+                                <span class="highlight-value">Jain University Auditorium</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Registration</span>
+                                <span class="highlight-value">Open</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="event-card">
                     <div class="event-header">
-                        <h3>Farewell 2k24</h3>
-                        <div class="event-badge">Celebratory Event</div>
+                        <h3>Circuit Design Workshop</h3>
+                        <span class="event-badge">Upcoming</span>
                     </div>
                     <div class="event-content">
                         <p class="event-description">
-                            A heartfelt farewell event celebrating the journey of the 2019-23 batch, 
-                            filled with memories, gratitude, and best wishes. A perfect send-off 
-                            honoring their achievements and marking the beginning of their next adventure.
+                            A hands-on workshop to learn the basics of circuit design and simulation using industry-standard tools.
                         </p>
                         <div class="event-highlights">
                             <div class="highlight">
-                                <span class="highlight-label">Duration:</span>
-                                <span class="highlight-value">1 Day</span>
+                                <span class="highlight-label">Date</span>
+                                <span class="highlight-value">May 10, 2025</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <h3>Club Day 2k24</h3>
-                        <div class="event-badge">Foundation Event</div>
-                    </div>
-                    <div class="event-content">
-                        <p class="event-description">
-                            A special event marking the founding of the Evalanche Club, 
-                            bringing together enthusiasts to collaborate, innovate, and 
-                            grow. A perfect start to a journey of learning, teamwork, and creativity.
-                        </p>
-                        <div class="event-highlights">
                             <div class="highlight">
-                                <span class="highlight-label">Duration:</span>
-                                <span class="highlight-value">1 Day</span>
+                                <span class="highlight-label">Time</span>
+                                <span class="highlight-value">10:00 AM - 2:00 PM</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Venue</span>
+                                <span class="highlight-value">ECE Lab, Jain University</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-label">Registration</span>
+                                <span class="highlight-value">Open</span>
                             </div>
                         </div>
                     </div>
