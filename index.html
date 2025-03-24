@@ -5,33 +5,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" type="image/png" href="assets/images/logo.png">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
         <title>EvalanChE Club - ECE Department</title>
-        <!-- Three.js for 3D animations -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-        <!-- GSAP for cursor animations -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     </head>
     <body>
-        <!-- 3D Background Canvas -->
-        <div id="three-background"></div>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="nav-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-          <header class="header">
-            <img src="assets/images/logo.png" alt="Evalanche Club Logo" style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto;">
-            <br><br><br> <br>
-            <div class="logo">The EvalanChE Club</div>
-            <div class="tagline">"For the students, by the students"</div>
-            <a href="events.html" class="nav-button">View Events</a>
-        </header>
-        <section class="about">
+<!-- Header Section -->
+<header class="header">
+    <div class="header-content">
+        <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
+        <h1 class="header-title">The EvalanChE Club</h1>
+        <p class="header-tagline">"For the students, by the students"</p>
+    </div>
+</header>  
+
+        <!-- About Section -->
+        <section class="about" id="about">
             <div class="college-info">
                 <h2 class="section-title">Department of Electronics and Communication Engineering</h2>
-                <h2>Jain (Deemed-to-be) University</h2>
+                <h3>Jain (Deemed-to-be) University</h3>
             </div>
             <h3 class="section-header">Faculty Mentors</h3>
             <div class="quotes-container">
                 <div class="quote-card">
                     <p class="quote">"Evalanche Club represents the innovative spirit of our ECE department. It serves as a platform where students can transform their theoretical knowledge into practical applications."</p>
-                    <p class="author">Dr.Sumit Kumar</p>
+                    <p class="author">Dr. Sumit Kumar</p>
                     <p class="position">Head of Department</p>
                 </div>
                 <div class="quote-card">
@@ -88,92 +99,29 @@
                     <p class="author">Arsh Singh</p>
                     <p class="position">Vice-organizer</p>
                 </div>
-
                 <div class="quote-card">
                     <p class="quote">"Engineering the future, one signal at a time"</p>
-                    <p class="author">Makers Lab Head</p>
-                    <p class="position">Hemang Nagpal</p>
+                    <p class="author">Hemang Nagpal</p>
+                    <p class="position">Makers Lab Head</p>
                 </div>
             </div>
         </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="contact-info">Email: evalancheclub@jainuniversity.ac.in</p>
+            <p class="contact-info">Follow us on social media for updates!</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Twitter</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
         <footer>
             <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
         </footer>
-
-        <!-- Three.js Script for Glowing Particle Wave -->
-        <script>
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('three-background').appendChild(renderer.domElement);
-
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 5000;
-            const posArray = new Float32Array(particlesCount * 3);
-
-            for (let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 100;
-            }
-
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.2,
-                color: 0x00FFFF,
-                transparent: true,
-                opacity: 0.6
-            });
-
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-
-            camera.position.z = 50;
-
-            function animate() {
-                requestAnimationFrame(animate);
-                particlesMesh.rotation.y += 0.001;
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-
-            const cursor = document.createElement('div');
-            cursor.className = 'custom-cursor';
-            document.body.appendChild(cursor);
-
-            gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-
-            window.addEventListener('mousemove', (e) => {
-                gsap.to(cursor, {
-                    x: e.clientX,
-                    y: e.clientY,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
-            });
-        </script>
-
-        <!-- Cursor Tracking Animation -->
-        <script>
-            const cursor = document.createElement('div');
-            cursor.className = 'custom-cursor';
-            document.body.appendChild(cursor);
-
-            gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-
-            window.addEventListener('mousemove', (e) => {
-                gsap.to(cursor, {
-                    x: e.clientX,
-                    y: e.clientY,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
-            });
-        </script>
     </body>
 </html>

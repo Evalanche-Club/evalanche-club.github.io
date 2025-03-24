@@ -4,22 +4,36 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="events.css">
-        <title>Events - The Evalanche Club</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+        <link rel="icon" type="image/png" href="assets/images/logo.png">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+        <title>Events - The EvalanChE Club</title>
     </head>
     <body>
-        <div id="three-background"></div>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="nav-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-        <header class="header">
-            <div class="logo">The EvalanChE Club</div>
-            <div class="tagline">Events & Activities</div>
-            <a href="index.html" class="nav-button">Back to Homepage</a>
-        </header>
+<!-- Header Section -->
+<header class="header">
+    <div class="header-content">
+        <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
+        <h1 class="header-title">Events & Activities</h1>
+    </div>
+</header>
 
+        <!-- Technical Events Section -->
         <section class="events">
             <h2 class="section-title">Our Technical Events</h2>
-            
             <div class="event-cards">
                 <div class="event-card">
                     <div class="event-header">
@@ -74,9 +88,10 @@
                     </div>
                     <div class="event-content">
                         <p class="event-description">
-                           Electrothon – where circuits challenge and ideas ignite. 
-                           Debug, build, and bring innovations to life.Think fast, 
-                           solve smart, and engineer the future!                        </p>
+                            Electrothon – where circuits challenge and ideas ignite. 
+                            Debug, build, and bring innovations to life. Think fast, 
+                            solve smart, and engineer the future!
+                        </p>
                         <div class="event-highlights">
                             <div class="highlight">
                                 <span class="highlight-label">Duration:</span>
@@ -96,8 +111,9 @@
                     </div>
                     <div class="event-content">
                         <p class="event-description">
-                                Where participants solved challenges, innovated solutions, 
-                                and presented ideas that made an impact!
+                            Where participants solved challenges, innovated solutions, 
+                            and presented ideas that made an impact!
+                        </p>
                         <div class="event-highlights">
                             <div class="highlight">
                                 <span class="highlight-label">Duration:</span>
@@ -110,13 +126,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
+        <!-- Cultural Events Section -->
         <section class="events">
             <h2 class="section-title">Our Cultural Events</h2>
-            
             <div class="event-cards">
                 <div class="event-card">
                     <div class="event-header">
@@ -125,10 +140,10 @@
                     </div>
                     <div class="event-content">
                         <p class="event-description">
-                          A dynamic induction program designed to welcome and guide first-year students 
-                          as they embark on their academic journey. Engaging sessions, interactive activities, 
-                          and mentorship opportunities help them adapt seamlessly to college life while fostering 
-                          curiosity and camaraderie.
+                            A dynamic induction program designed to welcome and guide first-year students 
+                            as they embark on their academic journey. Engaging sessions, interactive activities, 
+                            and mentorship opportunities help them adapt seamlessly to college life while fostering 
+                            curiosity and camaraderie.
                         </p>
                         <div class="event-highlights">
                             <div class="highlight">
@@ -146,9 +161,9 @@
                     </div>
                     <div class="event-content">
                         <p class="event-description">
-                          A heartfelt farewell event celebrating the journey of the 2019-23 batch, 
-                          filled with memories, gratitude, and best wishes. A perfect send-off 
-                          honoring their achievements and marking the beginning of their next adventure.
+                            A heartfelt farewell event celebrating the journey of the 2019-23 batch, 
+                            filled with memories, gratitude, and best wishes. A perfect send-off 
+                            honoring their achievements and marking the beginning of their next adventure.
                         </p>
                         <div class="event-highlights">
                             <div class="highlight">
@@ -166,9 +181,10 @@
                     </div>
                     <div class="event-content">
                         <p class="event-description">
-                          A special event marking the founding of the Evalanche Club, 
-                          bringing together enthusiasts to collaborate, innovate, and 
-                          grow. A perfect start to a journey of learning, teamwork, and creativity.
+                            A special event marking the founding of the Evalanche Club, 
+                            bringing together enthusiasts to collaborate, innovate, and 
+                            grow. A perfect start to a journey of learning, teamwork, and creativity.
+                        </p>
                         <div class="event-highlights">
                             <div class="highlight">
                                 <span class="highlight-label">Duration:</span>
@@ -180,65 +196,9 @@
             </div>
         </section>
 
+        <!-- Footer -->
         <footer>
             <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
         </footer>
-
-        <script>
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('three-background').appendChild(renderer.domElement);
-
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 5000;
-            const posArray = new Float32Array(particlesCount * 3);
-
-            for (let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 100;
-            }
-
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.2,
-                color: 0x00FFFF,
-                transparent: true,
-                opacity: 0.6
-            });
-
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-
-            camera.position.z = 50;
-
-            function animate() {
-                requestAnimationFrame(animate);
-                particlesMesh.rotation.y += 0.001;
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-
-            const cursor = document.createElement('div');
-            cursor.className = 'custom-cursor';
-            document.body.appendChild(cursor);
-
-            gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-
-            window.addEventListener('mousemove', (e) => {
-                gsap.to(cursor, {
-                    x: e.clientX,
-                    y: e.clientY,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
-            });
-        </script>
     </body>
 </html>
