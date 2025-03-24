@@ -1,4 +1,6 @@
-# evalanche-club.github.io
+![logo](assets/images/logo.png)
+
+# The EvalanChE Club 
 
 Welcome to the official website of the Evalanche Club. 
 This website serves as a platform to showcase our members and events. 
