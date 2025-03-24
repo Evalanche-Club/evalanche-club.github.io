@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="contact.css">
+        <link rel="icon" type="image/png" href="assets/images/logo.png">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <title>Contact - The EvalanChE Club</title>
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="nav-logo">
+            </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
+                <h1 class="header-title">Contact Us</h1>
+            </div>
+        </header>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="contact-info">Email: evalancheclub@jainuniversity.ac.in</p>
+            <p class="contact-info">Follow us on social media for updates!</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/evalanche_club/" class="social-link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.linkedin.com/company/evalanche-club/posts/?feedView=all" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            </div>
+
+            <!-- Contact Form with Formspree Integration -->
+            <form class="contact-form" action="https://formspree.io/f/xkgjbzye" method="POST">
+                <h3 class="form-title">Send Us a Message</h3>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
+        </footer>
+    </body>
+</html>

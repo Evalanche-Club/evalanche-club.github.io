@@ -7,7 +7,7 @@
 }
 
 body {
-  background: url('constellation-bg.jpg') no-repeat center center fixed;
+  background: url('assets/constellation-bg.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #fff;
   line-height: 1.6;
@@ -38,6 +38,24 @@ body {
   height: auto;
 }
 
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-toggle-label span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #4df0ff;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -63,7 +81,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, rgba(10, 10, 46, 0.8), rgba(26, 26, 79, 0.8)), url('constellation-bg.jpg') no-repeat center center fixed;
+  background: linear-gradient(135deg, rgba(10, 10, 46, 0.8), rgba(26, 26, 79, 0.8)), url('assets/constellation-bg.jpg') no-repeat center center fixed;
   background-size: cover;
   position: relative;
 }
@@ -77,10 +95,10 @@ body {
 
 .header-logo {
   width: 100%;
-  max-width: 300px; /* Large size for the logo */
+  max-width: 300px;
   height: auto;
   margin-bottom: 2rem;
-  filter: drop-shadow(0 0 10px rgba(77, 240, 255, 0.5)); /* Subtle glow effect */
+  filter: drop-shadow(0 0 10px rgba(77, 240, 255, 0.5));
 }
 
 .header-title {
@@ -101,101 +119,44 @@ body {
                0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* About Section */
-.about {
+/* Introduction Section */
+.intro {
   padding: 4rem 2rem;
   background: rgba(0, 0, 0, 0.7);
+  text-align: center;
 }
 
 .section-title {
   font-size: 2rem;
   font-weight: 700;
-  text-align: center;
   margin-bottom: 1rem;
 }
 
-.college-info h3 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-align: center;
-  color: #ddd;
-  margin-bottom: 3rem;
-}
-
-.section-header {
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: center;
-  margin: 3rem 0 2rem;
-}
-
-/* Quote Cards */
-.quotes-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 0 2rem;
-  margin-bottom: 3rem;
-}
-
-.quote-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.quote-card:hover {
-  transform: translateY(-5px);
-}
-
-.quote {
-  font-style: italic;
-  font-size: 1rem;
-  color: #ddd;
-  margin-bottom: 1rem;
-}
-
-.author {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.position {
-  font-size: 0.9rem;
-  color: #bbb;
-}
-
-/* Contact Section */
-.contact {
-  padding: 4rem 2rem;
-  background: rgba(0, 0, 0, 0.7);
-  text-align: center;
-}
-
-.contact-info {
+.intro-text {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
   color: #ddd;
+  max-width: 800px;
+  margin: 0 auto 2rem;
 }
 
-.social-links {
+.intro-links {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 1rem;
 }
 
-.social-link {
-  color: #fff;
+.intro-link {
+  background: #4df0ff;
+  color: #1a1a4f;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  font-weight: 700;
+  transition: background 0.3s ease;
 }
 
-.social-link:hover {
-  color: #bbb;
+.intro-link:hover {
+  background: #3dd0e0;
 }
 
 /* Footer */
@@ -213,29 +174,98 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  body {
+      background-attachment: scroll;
+  }
+
   .navbar {
-      flex-direction: column;
-      gap: 1rem;
+      padding: 1rem;
+      flex-wrap: wrap;
+  }
+
+  .nav-toggle-label {
+      display: block;
   }
 
   .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem 0;
+      background: rgba(0, 0, 0, 0.9);
+      position: absolute;
+      top: 70px;
+      left: 0;
+  }
+
+  .nav-toggle:checked ~ .nav-links {
+      display: flex;
+  }
+
+  .nav-toggle:checked + .nav-toggle-label span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .nav-toggle:checked + .nav-toggle-label span:nth-child(2) {
+      opacity: 0;
+  }
+
+  .nav-toggle:checked + .nav-toggle-label span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .nav-links li a {
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+      display: block;
+  }
+
+  .header {
+      height: 80vh;
+  }
+
+  .header-logo {
+      max-width: 150px;
+  }
+
+  .header-title {
+      font-size: 2rem;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .header-tagline {
+      font-size: 0.9rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .intro {
+      padding: 2rem 1rem;
+  }
+
+  .section-title {
+      font-size: 1.5rem;
+  }
+
+  .intro-text {
+      font-size: 1rem;
+  }
+
+  .intro-links {
       flex-direction: column;
       gap: 1rem;
   }
 
-  .header-logo {
-      max-width: 200px; /* Smaller logo on mobile */
+  .intro-link {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
   }
 
-  .header-title {
-      font-size: 2.5rem;
+  footer {
+      padding: 1rem;
   }
 
-  .header-tagline {
-      font-size: 1rem;
-  }
-
-  .quotes-container {
-      padding: 0 1rem;
+  footer p {
+      font-size: 0.8rem;
   }
 }
