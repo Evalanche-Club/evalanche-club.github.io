@@ -10,6 +10,28 @@
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <title>Events - The EvalanChE Club</title>
+        <style>
+            .scroll-arrow {
+                position: relative;
+                width: 60px;
+                height: 60px;
+                font-size: 36px;
+                cursor: pointer;
+                background: #4df0ff; /* Assuming similar cyan from index.html */
+                color: #1a1a4f; /* Assuming similar dark blue from index.html */
+                border: none;
+                border-radius: 50%;
+                margin-top: 20px;
+                transition: all 0.2s ease;
+            }
+            .scroll-arrow:hover {
+                background: #3dd0e0; /* Assuming similar hover color from index.html */
+                box-shadow: 0 0 15px #4df0ff,
+                           0 0 25px #4df0ff,
+                           0 0 35px #4df0ff;
+                transform: scale(1.1);
+            }
+        </style>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -36,6 +58,8 @@
             <div class="header-content">
                 <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
                 <h1 class="header-title">Events & Activities</h1>
+                <!-- Scroll Arrow Button added here -->
+                <button class="scroll-arrow" onclick="scrollToNextHeading()">↓</button>
             </div>
         </header>
 
@@ -200,5 +224,23 @@
         <footer>
             <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
         </footer>
+
+        <!-- Scroll Function Script -->
+        <script>
+            function scrollToNextHeading() {
+                const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+                const scrollPosition = window.scrollY + window.innerHeight/2;
+                
+                for (let i = 0; i < headings.length; i++) {
+                    if (headings[i].offsetTop > scrollPosition) {
+                        headings[i].scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        break;
+                    }
+                }
+            }
+        </script>
     </body>
 </html>
