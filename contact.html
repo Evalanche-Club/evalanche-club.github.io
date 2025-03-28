@@ -8,30 +8,8 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
         <!-- FontAwesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <title>Contact - The EvalanChE Club</title>
-        <style>
-            .scroll-arrow {
-                position: relative;
-                width: 60px;
-                height: 60px;
-                font-size: 36px;
-                cursor: pointer;
-                background: #4df0ff; /* Matches index.html color scheme */
-                color: #1a1a4f;
-                border: none;
-                border-radius: 50%;
-                margin-top: 20px;
-                transition: all 0.3s ease;
-            }
-            .scroll-arrow:hover {
-                background: #3dd0e0;
-                box-shadow: 0 0 15px #4df0ff,
-                           0 0 25px #4df0ff,
-                           0 0 35px #4df0ff;
-                transform: scale(1.1);
-            }
-        </style>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -46,10 +24,10 @@
                 <span></span>
             </label>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
 
@@ -58,8 +36,6 @@
             <div class="header-content">
                 <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
                 <h1 class="header-title">Contact Us</h1>
-                <!-- Scroll Arrow Button added here -->
-                <button class="scroll-arrow" onclick="scrollToNextHeading()">↓</button>
             </div>
         </header>
 
@@ -69,12 +45,12 @@
             <p class="contact-info">Email: evalancheclub@jainuniversity.ac.in</p>
             <p class="contact-info">Follow us on social media for updates!</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/evalanche_club/" class="social-link" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://www.instagram.com/evalanche_club/" class="social-link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
                 <a href="https://www.linkedin.com/company/evalanche-club/posts/?feedView=all" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
             </div>
 
             <!-- Contact Form with Formspree Integration -->
-            <form class="contact-form" action="https://formspree.io/f/xkgjbzye" method="POST">
+            <form class="contact-form" action="https://formspree.io/f/xkgjbzye" method="POST" id="contact-form">
                 <h3 class="form-title">Send Us a Message</h3>
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -83,12 +59,14 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <span class="error-message" id="email-error"></span>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
                     <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Send Message</button>
+                <p class="success-message" id="success-message" style="display: none;">Message sent successfully!</p>
             </form>
         </section>
 
@@ -97,22 +75,68 @@
             <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
         </footer>
 
-        <!-- Scroll Function Script -->
+        <!-- JavaScript for Interactivity -->
         <script>
-            function scrollToNextHeading() {
-                const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-                const scrollPosition = window.scrollY + window.innerHeight/2;
-                
-                for (let i = 0; i < headings.length; i++) {
-                    if (headings[i].offsetTop > scrollPosition) {
-                        headings[i].scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        break;
-                    }
+            // Close hamburger menu on link click
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('nav-toggle').checked = false;
+                });
+            });
+
+            // Contact form validation and feedback
+            const form = document.getElementById('contact-form');
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const successMessage = document.getElementById('success-message');
+
+            emailInput.addEventListener('input', () => {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.textContent = 'Please enter a valid email address';
+                    emailError.style.color = '#ff4d4d';
+                } else {
+                    emailError.textContent = '';
                 }
-            }
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    if (response.ok) {
+                        form.reset();
+                        successMessage.style.display = 'block';
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 3000);
+                    } else {
+                        alert('There was an error sending your message. Please try again.');
+                    }
+                } catch (error) {
+                    alert('There was an error sending your message. Please try again.');
+                }
+            });
+
+            // Scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section-title, .contact-info, .social-links, .contact-form').forEach(element => {
+                observer.observe(element);
+            });
         </script>
     </body>
 </html>
