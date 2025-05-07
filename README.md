@@ -27,4 +27,4 @@ This website serves as a platform to showcase our members and events.
 
 ## Official Domain 
 
-Coming Soon : https://evalancheclub.in/
+Check it out : https://evalancheclub.in/
