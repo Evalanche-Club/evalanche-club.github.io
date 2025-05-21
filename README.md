@@ -28,3 +28,11 @@ This website serves as a platform to showcase our members and events.
 ## Official Domain 
 
 Check it out : https://evalancheclub.in/
+
+---
+
+## Coming up (Maybe)
+
+1. Light Mode 
+2. Login/Signup
+3. Virtual ID's (For login and signup)
