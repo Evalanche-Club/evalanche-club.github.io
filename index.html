@@ -1,123 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="styles.css">
-        <link rel="icon" type="image/png" href="assets/images/logo.png">
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-        <!-- FontAwesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <title>EvalanChE Club - ECE Department</title>
-        <style>
-            .scroll-arrow {
-                position: relative;
-                width: 60px; /* Increased from 40px */
-                height: 60px; /* Increased from 40px */
-                font-size: 36px; /* Increased from 24px */
-                cursor: pointer;
-                background: #4df0ff;
-                color: #1a1a4f;
-                border: none;
-                border-radius: 50%;
-                margin-top: 20px;
-                transition: all 0.3s ease; /* Updated to transition all properties */
-            }
-            .scroll-arrow:hover {
-                background: #3dd0e0;
-                box-shadow: 0 0 15px #4df0ff, /* Outer glow */
-                           0 0 25px #4df0ff, /* Middle glow */
-                           0 0 35px #4df0ff; /* Inner glow */
-                transform: scale(1.1); /* Slight scale up on hover */
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Navigation Bar -->
-        <nav class="navbar">
-            <div class="logo-container">
-                <a href="index.html"><img src="assets/images/logo.png" alt="Evalanche Club Logo" class="nav-logo"></a>
-            </div>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>EvalanChE Club - ECE Department</title>
 
-        <!-- Header Section -->
-        <header class="header">
-            <div class="header-content">
-                <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
-                <h1 class="header-title">The EvalanChE Club</h1>
-                <p class="header-tagline">"For the students, by the students"</p>
-                <!-- Scroll Arrow Button -->
-                <button class="scroll-arrow" onclick="scrollToNextHeading()">↓</button>
-            </div>
-        </header>
+  <!-- Theme styles -->
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --primary: #4df0ff;
+    }
 
-        <!-- Introduction Section -->
-        <section class="intro">
-            <h2 class="section-title">Welcome to EvalanChE Club</h2>
-            <p class="intro-text">
-                The EvalanChE Club is a vibrant community within the Department of Electronics and Communication Engineering at Jain (Deemed-to-be) University. We are dedicated to fostering innovation, creativity, and collaboration among students through technical and cultural events.
-            </p>
-            <div class="intro-links">
-                <a href="events.html" class="intro-link">Explore Our Events</a>
-                <a href="about.html" class="intro-link">Learn More About Us</a>
-                <a href="contact.html" class="intro-link">Get in Touch</a>
-            </div>
-            <!-- Vision and Mission Section -->
-            <div class="vision-mission">
-              <div class="vision">
-                <h3 class="vm-title">Vision</h3>
-                <p class="vm-text">
-                    To create a platform where students can explore, learn, and showcase their talents, bridging the gap between theoretical knowledge and practical applications. We envision a community that nurtures innovation, creativity, and leadership, empowering students to become well-rounded professionals and responsible citizens.
-                </p>
-            </div>
-            <div class="mission">
-              <h3 class="vm-title">Mission</h3>
-              <p class="vm-text">To provide a comprehensive ecosystem for students to:</p>
-              <ol class="mission-list">
-                <li>Enhance technical skills through workshops, seminars, competitions, etc.</li>
-                <li>Develop soft skills through events like debates, hackathons, paper presentations, trainings, etc.</li>
-                <li>Foster cultural awareness and social responsibility through cultural days, sports days, social services, etc.</li>
-                <li>Encourage networking, team building, and professional communication.</li>
-                <li>Provide a platform for personal growth, stress management, and overall well-being.</li>
-              </ol>
-            </div>
-            </div>
-        </section>
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+    }
 
-        <!-- Footer -->
-        <footer>
-            <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
-        </footer>
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Roboto', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-        <!-- Scroll Function Script -->
-        <script>
-            function scrollToNextHeading() {
-                const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-                const scrollPosition = window.scrollY + window.innerHeight/2;
-                
-                for (let i = 0; i < headings.length; i++) {
-                    if (headings[i].offsetTop > scrollPosition) {
-                        headings[i].scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        break;
-                    }
-                }
-            }
-        </script>
-    </body>
+    .scroll-arrow {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      font-size: 36px;
+      cursor: pointer;
+      background: var(--primary);
+      color: #1a1a4f;
+      border: none;
+      border-radius: 50%;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-arrow:hover {
+      background: #3dd0e0;
+      box-shadow: 0 0 15px #4df0ff, 0 0 25px #4df0ff, 0 0 35px #4df0ff;
+      transform: scale(1.1);
+    }
+
+    #theme-toggle {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+      color: var(--text-color);
+    }
+
+    .intro-links a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 8px var(--primary);
+      transition: 0.3s ease;
+    }
+
+    .auth-links {
+      margin-top: 20px;
+    }
+
+    .auth-links a {
+      display: inline-block;
+      margin: 10px;
+      padding: 8px 16px;
+      background: var(--primary);
+      color: #000;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .auth-links a:hover {
+      background: #3dd0e0;
+      box-shadow: 0 0 10px var(--primary);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <a href="index.html"><img src="assets/images/logo.png" alt="Evalanche Club Logo" class="nav-logo"></a>
+    </div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button id="theme-toggle" title="Toggle Light/Dark">🌙</button></li>
+    </ul>
+  </nav>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-content">
+      <img src="assets/images/logo.png" alt="Evalanche Club Logo" class="header-logo">
+      <h1 class="header-title">The EvalanChE Club</h1>
+      <p class="header-tagline">"For the students, by the students"</p>
+      <button class="scroll-arrow" onclick="scrollToNextHeading()">↓</button>
+    </div>
+  </header>
+
+  <!-- Introduction Section -->
+  <section class="intro">
+    <h2 class="section-title">Welcome to EvalanChE Club</h2>
+    <p class="intro-text">
+      The EvalanChE Club is a vibrant community within the Department of Electronics and Communication Engineering at Jain (Deemed-to-be) University. We are dedicated to fostering innovation, creativity, and collaboration among students through technical and cultural events.
+    </p>
+
+    <div class="intro-links">
+      <a href="events.html" class="intro-link">Explore Our Events</a>
+      <a href="about.html" class="intro-link">Learn More About Us</a>
+      <a href="contact.html" class="intro-link">Get in Touch</a>
+    </div>
+
+    <!-- Login / Signup buttons -->
+    <div class="auth-links">
+      <a href="login.html">Login with Virtual ID</a>
+      <a href="signup.html">Signup with Virtual ID</a>
+    </div>
+
+    <!-- Vision and Mission Section -->
+    <div class="vision-mission">
+      <div class="vision">
+        <h3 class="vm-title">Vision</h3>
+        <p class="vm-text">
+          To create a platform where students can explore, learn, and showcase their talents, bridging the gap between theoretical knowledge and practical applications. We envision a community that nurtures innovation, creativity, and leadership, empowering students to become well-rounded professionals and responsible citizens.
+        </p>
+      </div>
+      <div class="mission">
+        <h3 class="vm-title">Mission</h3>
+        <p class="vm-text">To provide a comprehensive ecosystem for students to:</p>
+        <ol class="mission-list">
+          <li>Enhance technical skills through workshops, seminars, competitions, etc.</li>
+          <li>Develop soft skills through events like debates, hackathons, paper presentations, trainings, etc.</li>
+          <li>Foster cultural awareness and social responsibility through cultural days, sports days, social services, etc.</li>
+          <li>Encourage networking, team building, and professional communication.</li>
+          <li>Provide a platform for personal growth, stress management, and overall well-being.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Evalanche Club - Department of ECE, Jain (Deemed-to-be) University</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function scrollToNextHeading() {
+      const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      for (let i = 0; i < headings.length; i++) {
+        if (headings[i].offsetTop > scrollPosition) {
+          headings[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+          break;
+        }
+      }
+    }
+
+    const toggleButton = document.getElementById("theme-toggle");
+    const currentTheme = localStorage.getItem("theme");
+
+    if (currentTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+      toggleButton.textContent = "🌞";
+    }
+
+    toggleButton.addEventListener("click", () => {
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      if (isDark) {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+        toggleButton.textContent = "🌙";
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        toggleButton.textContent = "🌞";
+      }
+    });
+  </script>
+</body>
 </html>

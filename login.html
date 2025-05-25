@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login - EvalanChE Club</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="icon" type="image/png" href="assets/images/logo.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .login-container {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-container label {
+            display: block;
+            margin: 0.5rem 0 0.3rem;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #4df0ff;
+            color: #1a1a4f;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-container button:hover {
+            background: #3dd0e0;
+        }
+
+        .toggle-theme {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        :root[data-theme='light'] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --card-bg: #f4f4f4;
+            --input-bg: #ffffff;
+        }
+
+        :root[data-theme='dark'] {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --card-bg: #1f1f1f;
+            --input-bg: #2c2c2c;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-theme" id="theme-toggle" aria-label="Toggle light/dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="login-container">
+        <h2>Member Login</h2>
+        <form action="login.php" method="POST">
+  <input type="text" name="virtual-id" required />
+  <input type="password" name="password" required />
+  <button type="submit">Login</button>
+</form>
+        <div class="signup-link">
+            Don't have an account? <a href="signup.html">Sign up</a>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        function setTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.innerHTML = theme === 'dark'
+                ? '<i class="fas fa-sun"></i>'
+                : '<i class="fas fa-moon"></i>';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        // Apply saved theme on load
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+    </script>
+</body>
+</html>
